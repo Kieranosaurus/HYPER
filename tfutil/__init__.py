@@ -12,9 +12,8 @@ import importlib
 import imp
 import numpy as np
 from collections import OrderedDict
-# import tensorflow as tf
-import tensorflow.compat.v1 as tf
-tf.compat.v1.disable_eager_execution()
+import tensorflow as tf
+
 
 # ----------------------------------------------------------------------------
 # Convenience.
