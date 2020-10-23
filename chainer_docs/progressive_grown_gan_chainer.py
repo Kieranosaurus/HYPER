@@ -115,7 +115,7 @@ class PGGC(chainer.Chain):
             self.conv18_b = Bias(shape=(16,))
             self.torgb0 = Convolution2D(in_channels=16, out_channels=3, stride=1, ksize=1, pad=0)
 
-    def __call__(self, x, layer, n_in=0):
+    def __call__(self, x, n_in=0):
         # pixel norm after each conv doesn't matter. only at the end and after each block
 
         # -- 1

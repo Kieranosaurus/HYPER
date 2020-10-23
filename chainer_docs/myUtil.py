@@ -5,7 +5,7 @@ import numpy as np
 import chainer
 import h5py
 from PIL import Image
-import HYPER.paths as paths
+# import HYPER.paths as paths
 import tensorflow as tf
 import pickle
 
