@@ -131,8 +131,8 @@ class PGGC(chainer.Chain):
         h = self.pixel_norm(h)  # 512 x 4 x 4
         p = self.torgb8(h)
         p = self.upscale2d(p) # <--- L1 output
-        if layer == 1:
-            return p[:, :, 2:6, 2:6]   # 8 --> 4
+        # if layer == 1:
+        #     return p[:, :, 2:6, 2:6]   # 8 --> 4
         # -- 2
         h = self.upscale2d(h)  # 512 x 8 x 8
         h = self.conv3(h)
@@ -146,8 +146,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb7(h)
         p = self.grow(p, p_, constants.ALPHAS[0])
         p = self.upscale2d(p)  # < ---
-        if layer == 2:
-            return p[:, :, 4:12, 4:12]    # 16 --> 8
+        # if layer == 2:
+        #     return p[:, :, 4:12, 4:12]    # 16 --> 8
         # -- 3
         h = self.upscale2d(h)  # 512 x 16 x 16
         h = self.conv5(h)
@@ -161,8 +161,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb6(h)
         p = self.grow(p, p_, constants.ALPHAS[1])
         p = self.upscale2d(p)
-        if layer == 3:
-            return p[:, :, 8:24, 8:24]   # 32 --> 16
+        # if layer == 3:
+        #     return p[:, :, 8:24, 8:24]   # 32 --> 16
         # -- 4
         h = self.upscale2d(h)  # 512 x 32 x 32
         h = self.conv7(h)
@@ -176,8 +176,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb5(h)
         p = self.grow(p, p_, constants.ALPHAS[2])
         p = self.upscale2d(p)
-        if layer == 4:
-            return p[:, :, 16:48, 16:48]
+        # if layer == 4:
+        #     return p[:, :, 16:48, 16:48]
         # -- 5
         h = self.upscale2d(h)  # 256 x 64 x 64
         h = self.conv9(h)
@@ -191,8 +191,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb4(h)
         p = self.grow(p, p_, constants.ALPHAS[3])
         p = self.upscale2d(p)
-        if layer == 5:
-            return p[:, :, 32:96, 32:96]
+        # if layer == 5:
+        #     return p[:, :, 32:96, 32:96]
         # -- 6
         # print('l6')
         h = self.upscale2d(h)  # 128 x 128 x 128
@@ -207,8 +207,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb3(h)
         p = self.grow(p, p_, constants.ALPHAS[4])
         p = self.upscale2d(p)
-        if layer == 6:
-            return p
+        # if layer == 6:
+        #     return p
         # -- 7
         # print('l7')
         h = self.upscale2d(h)  # 64 x 256 x 256
@@ -223,8 +223,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb2(h)
         p = self.grow(p, p_, constants.ALPHAS[5])
         p = self.upscale2d(p)
-        if layer == 7:
-            return h
+        # if layer == 7:
+        #     return h
         # -- 8
         h = self.upscale2d(h)  # 32 x 512 x 512
         h = self.conv15(h)
@@ -238,8 +238,8 @@ class PGGC(chainer.Chain):
         p_ = self.torgb1(h)
         p = self.grow(p, p_, constants.ALPHAS[6])
         p = self.upscale2d(p)
-        if layer == 8:
-            return h
+        # if layer == 8:
+        #     return h
         # -- 9
         # print('l9')
         h = self.upscale2d(h)  # 16 x 1024 x 1024
@@ -252,8 +252,8 @@ class PGGC(chainer.Chain):
         h = self.conv18_b(h)
         h = leaky_relu(h)
         h = self.pixel_norm(h)  # 16 x 1024 x 1024
-        if layer == 9:
-            return h
+        # if layer == 9:
+        #     return h
         # -- last
         p_ = self.torgb0(h)
         return p_
